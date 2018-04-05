@@ -3,10 +3,15 @@
 </header>
 <nav class="row">
 	<ul class="clearfix">
-		<li><a routerLink="/contacts" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">All contacts</a></li>
-		<li><a routerLink="/contacts/favorites" routerLinkActive="active">My favorites</a></li>
+		<li>
+			<a routerLink="/contacts" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">All contacts</a>
+		</li>
+		<li>
+			<a routerLink="/contacts/favorites" routerLinkActive="active">My favorites</a>
+		</li>
 	</ul>
 </nav>
-
+<div class="container">
 <router-outlet></router-outlet>
 <!-- Routed views go here -->
+</div>
