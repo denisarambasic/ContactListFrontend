@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { FavoriteListComponent } from './favorite-list/favorite-list.component';
+import { ContactCreateComponent } from './contact-create/contact-create.component';
 
 import { ContactService } from './services/contact.service';
 
@@ -14,7 +15,8 @@ import { ContactService } from './services/contact.service';
   declarations: [
     AppComponent,
 	ContactListComponent,
-	FavoriteListComponent
+	FavoriteListComponent,
+	ContactCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -22,6 +24,7 @@ import { ContactService } from './services/contact.service';
 	AppRoutingModule,
 	NgbModule.forRoot()
   ],
+  entryComponents: [ContactCreateComponent],
   providers: [ ContactService ],
   bootstrap: [AppComponent]
 })
