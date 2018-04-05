@@ -1,7 +1,10 @@
-<nav>
-	<ul>
-		<li><a routerLink="/contacts">All contacts</a></li>
-		<li><a routerLink="/contacts/favorites">My favorites</a></li>
+<header>
+	<h2 class="logo">Typeqast</h2>
+</header>
+<nav class="row">
+	<ul class="clearfix">
+		<li><a routerLink="/contacts" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">All contacts</a></li>
+		<li><a routerLink="/contacts/favorites" routerLinkActive="active">My favorites</a></li>
 	</ul>
 </nav>
 
