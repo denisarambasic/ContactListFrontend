@@ -1,0 +1,37 @@
+<div class="search row justify-content-center">
+	<div class="col col-md-6 app">
+		<input type="text" class='search-box'>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col col-md-3">
+		<div class="box create">
+			<div class="card add">
+				<i class="fas fa-plus my-icon" style="font-size:25px;"></i>
+				<p>Add new</p>
+			</div>
+		</div>
+	</div>
+	<!-- repeat this block -->
+	<div class="col col-md-3" *ngFor="let contact of contacts">
+		<div class="box list">
+			<div class="icon1">
+				<i [ngClass]="(contact.favorite == '1') ? 'fas' : 'far'" class="fa-heart"></i>
+			</div>
+			<div class="icon2">
+				<i class="fas fa-pencil-alt"></i>
+			</div>
+			<div class="icon3">
+				<i class="far fa-trash-alt"></i>
+			</div>
+			<div class="picture">
+				<!-- Load the picture here -->
+			</div>
+			<div class="contact-name">
+				{{ contact.first_name }} {{ contact.last_name }}
+			</div>
+		</div>
+	</div>
+	<!-- End repeat -->
+</div>

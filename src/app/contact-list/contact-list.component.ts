@@ -9,13 +9,15 @@ import { ContactService } from '../services/contact.service';
 })
 export class ContactListComponent implements OnInit, OnDestroy {
 	
+	contacts: any;
+	
 	contactSub: any;
 	
 	constructor(private contactService: ContactService){}
 	
 	ngOnInit() {
 		this.contactSub = this.contactService.getAllContacts().subscribe(data => {
-			console.log(data);
+			this.contacts = data;
 		});
 	}
 	
