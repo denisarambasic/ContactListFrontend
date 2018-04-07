@@ -12,4 +12,8 @@ export class ContactService {
 		return this.http.get(this.url);
 	}
 	
+	submitData(formData) {
+		return this.http.post(this.url + 'create', formData);
+	}
+	
 }
