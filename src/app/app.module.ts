@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { FavoriteListComponent } from './favorite-list/favorite-list.component';
 import { ContactCreateComponent } from './contact-create/contact-create.component';
+import { DeleteContactComponent } from './delete-contact/delete-contact.component';
 
 import { ContactService } from './services/contact.service';
 
@@ -17,7 +18,8 @@ import { ContactService } from './services/contact.service';
     AppComponent,
 	ContactListComponent,
 	FavoriteListComponent,
-	ContactCreateComponent
+	ContactCreateComponent,
+	DeleteContactComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,7 @@ import { ContactService } from './services/contact.service';
 	FormsModule,
 	ReactiveFormsModule
   ],
-  entryComponents: [ContactCreateComponent],
+  entryComponents: [ContactCreateComponent, DeleteContactComponent],
   providers: [ ContactService ],
   bootstrap: [AppComponent]
 })

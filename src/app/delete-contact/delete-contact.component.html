@@ -1,0 +1,14 @@
+<div class="modal-header">
+	<h4 class="modal-title">Delete Contact</h4>
+	<button type="button" class="close" (click)="close()">
+	  <span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+	<p>Are you sure you want delete:</p>
+	<p>{{ first_name }} {{ last_name }}</p>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-danger" (click)="deleteUser()">Delete</button>
+	<button type="button" class="btn btn-light" (click)="close()">Close</button>
+</div>
