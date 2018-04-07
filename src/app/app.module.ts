@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app.routing';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ContactListComponent } from './contact-list/contact-list.component';
@@ -22,7 +23,9 @@ import { ContactService } from './services/contact.service';
     BrowserModule,
 	HttpClientModule,
 	AppRoutingModule,
-	NgbModule.forRoot()
+	NgbModule.forRoot(),
+	FormsModule,
+	ReactiveFormsModule
   ],
   entryComponents: [ContactCreateComponent],
   providers: [ ContactService ],
