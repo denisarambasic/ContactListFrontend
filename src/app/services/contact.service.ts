@@ -22,4 +22,9 @@ export class ContactService {
 		return this.http.patch(this.url + user_id, updateFavoriteObj);
 	}
 	
+	//delete user(contact)
+	deleteContact(user_id) {
+		return this.http.delete(this.url + user_id);
+	}
+	
 }
