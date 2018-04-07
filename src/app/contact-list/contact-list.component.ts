@@ -9,6 +9,8 @@ import { ContactCreateComponent } from '../contact-create/contact-create.compone
 })
 export class ContactListComponent implements OnInit, OnDestroy {
 	
+	imgFolderServer = 'http://192.168.33.10/typeqast/img/';
+	
 	contacts: any;
 	
 	contactSub: any;
@@ -27,7 +29,13 @@ export class ContactListComponent implements OnInit, OnDestroy {
 	
 	openModalCreate() {
 		const modalRef = this.modalService.open(ContactCreateComponent, { size: 'lg', backdrop: 'static', keyboard: false });
-		
+		modalRef.result.then(result=>{
+			if(result == true){
+				this.contactSub = this.contactService.getAllContacts().subscribe(data => {
+					this.contacts = data;
+				});
+			}
+		})
 	}
 	
 }
