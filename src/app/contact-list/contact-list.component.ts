@@ -14,6 +14,7 @@ export class ContactListComponent implements OnInit, OnDestroy {
 	contacts: any;
 	
 	contactSub: any;
+	//favoriteSub: any;
 	
 	constructor(private contactService: ContactService, private modalService: NgbModal){}
 	
@@ -36,6 +37,21 @@ export class ContactListComponent implements OnInit, OnDestroy {
 				});
 			}
 		})
+	}
+	
+	//change the user to favorite or not
+	changeFavorite(user_id, favorite){
+		//toggle favorite
+		let favorite_change = (favorite == 1) ? 0 : 1;
+		
+		let updateFavoriteObj = { 'id': user_id, 'favorite': favorite_change };
+		
+		this.contactService.updateFavorite(user_id,updateFavoriteObj).subscribe(data => {
+			//load the contacts again
+			this.contactSub = this.contactService.getAllContacts().subscribe(data => {
+					this.contacts = data;
+			});
+		});
 	}
 	
 }
