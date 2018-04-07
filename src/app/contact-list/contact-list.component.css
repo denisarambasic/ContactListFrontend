@@ -104,16 +104,16 @@
 	height: 80px;
 	border-radius: 50%;
 	background-color: purple;
-	position: absolute;
+	position: relative;
 	top: 50px;
-	left:87px;
+	margin: auto;
 }
 
 .contact-name {
 	font-weight: 500;
 	text-align: center;
     position: relative;
-    top: 142px;
+    top: 65px;
 	color: #bcc4c3;
 }
 

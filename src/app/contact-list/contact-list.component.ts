@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ContactService } from '../services/contact.service';
 import { ContactCreateComponent } from '../contact-create/contact-create.component';
+import { DeleteContactComponent } from '../delete-contact/delete-contact.component';
 @Component({
 	selector: 'app-contact-list',
 	templateUrl: 'contact-list.component.html',
@@ -39,7 +40,7 @@ export class ContactListComponent implements OnInit, OnDestroy {
 		})
 	}
 	
-	//change the user to favorite or not
+	//change the user(contact) to favorite or not
 	changeFavorite(user_id, favorite){
 		//toggle favorite
 		let favorite_change = (favorite == 1) ? 0 : 1;
@@ -52,6 +53,26 @@ export class ContactListComponent implements OnInit, OnDestroy {
 					this.contacts = data;
 			});
 		});
+	}
+	
+	//Delete user(contact)
+	openModalDelete(contact_id, first_name, last_name){
+		const modalDelRef = this.modalService.open(DeleteContactComponent, { size: 'sm' });
+		modalDelRef.componentInstance.id = contact_id;
+		modalDelRef.componentInstance.first_name = first_name;
+		modalDelRef.componentInstance.last_name = last_name;
+		
+		modalDelRef.result.then((result) => {
+			  if(result == true){
+					this.contactService.getAllContacts().subscribe(data => {
+						this.contacts = data;
+					});
+				}
+			}, (reason) => {
+			  //
+			}
+		);
+		
 	}
 	
 }
