@@ -27,4 +27,9 @@ export class ContactService {
 		return this.http.delete(this.url + user_id);
 	}
 	
+	//Get user by i
+	getUserById(user_id) {
+		return this.http.get(this.url + user_id);
+	}
+	
 }

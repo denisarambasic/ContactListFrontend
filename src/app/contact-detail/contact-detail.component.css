@@ -1,0 +1,37 @@
+.show {
+	margin-top: 40px;
+}
+
+.fa-arrow-alt-circle-left {
+	font-size:20px;
+}
+
+.name {
+	padding:0 20px;
+	font-size: 18px
+}
+
+.title {
+	text-align: right;
+	font-weight: bold;
+    font-size: 16px;
+}
+
+.title-2 { 
+	margin-top: 20px;
+}
+
+.number {
+	margin-left: 15px;
+}
+
+.edit-favorite{
+	display: inline-block;
+	float:right;
+}
+
+.icon2,
+.fa-heart,
+.fa-arrow-alt-circle-left {
+	cursor: pointer;
+}

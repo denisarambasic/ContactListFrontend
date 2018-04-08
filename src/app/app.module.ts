@@ -10,6 +10,7 @@ import { ContactListComponent } from './contact-list/contact-list.component';
 import { FavoriteListComponent } from './favorite-list/favorite-list.component';
 import { ContactCreateComponent } from './contact-create/contact-create.component';
 import { DeleteContactComponent } from './delete-contact/delete-contact.component';
+import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 
 import { ContactService } from './services/contact.service';
 
@@ -19,7 +20,8 @@ import { ContactService } from './services/contact.service';
 	ContactListComponent,
 	FavoriteListComponent,
 	ContactCreateComponent,
-	DeleteContactComponent
+	DeleteContactComponent,
+	ContactDetailComponent
   ],
   imports: [
     BrowserModule,

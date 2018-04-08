@@ -1,0 +1,33 @@
+<div class="row show">
+	<div class="col col-md-3">
+		<img style="max-width:100%" class="profile_img" src="{{ imgFolderServer }}{{ contact?.image_name }}" alt="" />
+	</div>
+	<div class="col col-md-9">
+		<span (click)="goBack()"><i class="fas fa-arrow-alt-circle-left"></i></span>
+		
+		<span class="name"><b>{{ contact?.first_name }} {{ contact?.last_name }}</b></span>
+		
+		<div class="edit-favorite">
+		<span (click)="changeFavorite(contact?.id, contact?.favorite)">
+			<span *ngIf="contact?.favorite == 1"><i class="fas fa-heart"></i></span>
+			<span *ngIf="contact?.favorite != 1"><i class="far fa-heart"></i></span>
+		</span>
+		
+		<span class="icon2">
+			<i class="fas fa-pencil-alt"></i>
+		</span>
+		</div>
+		<hr />
+		<div class="row">
+			<div class="col col-md-6 title"><i class="far fa-envelope"></i> Email:</div>
+			<div class="col col-md-6"><a href="mailto:{{ contact?.email }}">{{ contact?.email }}</a></div>
+		</div>
+		<div class="row">
+			<div class="col col-md-6 title title-2"><i class="fas fa-phone-volume"></i> Phones:</div>
+			<div class="col col-md-6"></div>
+			
+			<div class="col col-md-6 offset-md-6" *ngFor="let phone of contact?.phones"><b>{{ phone.name }}: </b>
+			<span class="number">{{ phone.number }}</span></div>
+		</div>
+	</div>
+</div>

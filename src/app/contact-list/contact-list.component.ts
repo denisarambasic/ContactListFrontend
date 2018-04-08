@@ -41,7 +41,8 @@ export class ContactListComponent implements OnInit, OnDestroy {
 	}
 	
 	//change the user(contact) to favorite or not
-	changeFavorite(user_id, favorite){
+	changeFavorite(event, user_id, favorite){
+		event.stopPropagation();
 		//toggle favorite
 		let favorite_change = (favorite == 1) ? 0 : 1;
 		
@@ -56,7 +57,8 @@ export class ContactListComponent implements OnInit, OnDestroy {
 	}
 	
 	//Delete user(contact)
-	openModalDelete(contact_id, first_name, last_name){
+	openModalDelete(event, contact_id, first_name, last_name){
+		event.stopPropagation();
 		const modalDelRef = this.modalService.open(DeleteContactComponent, { size: 'sm' });
 		modalDelRef.componentInstance.id = contact_id;
 		modalDelRef.componentInstance.first_name = first_name;
@@ -73,6 +75,10 @@ export class ContactListComponent implements OnInit, OnDestroy {
 			}
 		);
 		
+	}
+	
+	showContact(){
+		console.log('test');
 	}
 	
 }

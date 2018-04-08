@@ -15,14 +15,14 @@
 	</div>
 	<!-- repeat this block -->
 	<div class="col col-md-3" *ngFor="let contact of contacts">
-		<div class="box list">
-			<div class="icon1" (click)="changeFavorite(contact.id, contact.favorite)">
+		<div class="box list" [routerLink]="['/contacts', contact.id]">
+			<div class="icon1" (click)="changeFavorite($event, contact.id, contact.favorite)">
 				<i [ngClass]="(contact.favorite == '1') ? 'fas' : 'far'" class="fa-heart"></i>
 			</div>
 			<div class="icon2">
 				<i class="fas fa-pencil-alt"></i>
 			</div>
-			<div class="icon3" (click)="openModalDelete(contact.id, contact.first_name, contact.last_name)">
+			<div class="icon3" (click)="openModalDelete($event, contact.id, contact.first_name, contact.last_name)">
 				<i class="far fa-trash-alt"></i>
 			</div>
 			<div class="picture">

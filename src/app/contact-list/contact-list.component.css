@@ -71,7 +71,7 @@
 
 .icon1:hover{
 	color: #bcdfe3;
-	cursor: pointer;
+	cursor: auto;
 }
 
 .icon2{
@@ -84,7 +84,7 @@
 
 .icon2:hover{
 	color: blue;
-	cursor: pointer;
+	cursor: auto;
 }
 
 .icon3{
@@ -96,7 +96,7 @@
 
 .icon3:hover{
 	color: red;
-	cursor: pointer;
+	cursor: auto;
 }
 
 .picture{
