@@ -18,6 +18,11 @@ export class ContactService {
 		return this.http.get(this.url + 'favorites');
 	}
 	
+	//get all contact by falue from searchbox
+	getAllContactsByValue(search_value){
+		return this.http.get(this.url + 'search/' + search_value);
+	}
+	
 	//create a new user(contact) on the backend
 	submitData(formData) {
 		return this.http.post(this.url + 'create', formData);
