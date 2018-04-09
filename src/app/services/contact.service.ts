@@ -32,4 +32,9 @@ export class ContactService {
 		return this.http.get(this.url + user_id);
 	}
 	
+	//edit contact
+	editData(user_id, formData){
+		return this.http.post(this.url + user_id, formData);
+	}
+	
 }

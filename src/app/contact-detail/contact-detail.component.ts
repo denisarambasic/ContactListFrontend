@@ -2,6 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ContactService } from '../services/contact.service';
 import { Location } from '@angular/common';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ContactEditComponent } from '../contact-edit/contact-edit.component';
+
 @Component({
 	selector: 'app-contact-detail',
 	templateUrl: 'contact-detail.component.html',
@@ -15,8 +18,10 @@ export class ContactDetailComponent implements OnInit, OnDestroy {
 	contactSub: any;
 	contact: any;
 	
-	constructor(private activatedRoute: ActivatedRoute, private contactService: ContactService
-				private location: Location){}
+	refreshState = false;
+	
+	constructor(private activatedRoute: ActivatedRoute, private contactService: ContactService,
+				private location: Location, private modalService: NgbModal){}
 	
 	ngOnInit() {
 		this.routeSub = this.activatedRoute.params.subscribe(data => {
@@ -52,6 +57,22 @@ export class ContactDetailComponent implements OnInit, OnDestroy {
 		this.contactService.updateFavorite(user_id,updateFavoriteObj).subscribe(data => {
 			//update the favorite on server
 		});
+	}
+	
+	//Open contact-edit modal page
+	openModalEdit(contact) {
+		const modalRef = this.modalService.open(ContactEditComponent, { size: 'lg', backdrop: 'static', keyboard: false });
+		modalRef.componentInstance.contact = contact;
+		modalRef.result.then(result=>{
+			if(result == true){
+				this.contactService.getUserById(this.id).subscribe(data => {
+					this.contact = data;
+				});
+			}
+		});
+		
+		
+		
 	}
 	
 }

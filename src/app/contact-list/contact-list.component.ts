@@ -33,7 +33,7 @@ export class ContactListComponent implements OnInit, OnDestroy {
 		const modalRef = this.modalService.open(ContactCreateComponent, { size: 'lg', backdrop: 'static', keyboard: false });
 		modalRef.result.then(result=>{
 			if(result == true){
-				this.contactSub = this.contactService.getAllContacts().subscribe(data => {
+				this.contactService.getAllContacts().subscribe(data => {
 					this.contacts = data;
 				});
 			}

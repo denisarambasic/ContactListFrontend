@@ -13,7 +13,7 @@
 			<span *ngIf="contact?.favorite != 1"><i class="far fa-heart"></i></span>
 		</span>
 		
-		<span class="icon2">
+		<span class="icon2" (click)="openModalEdit(contact)">
 			<i class="fas fa-pencil-alt"></i>
 		</span>
 		</div>

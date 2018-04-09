@@ -1,39 +1,57 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { ContactService } from '../services/contact.service';
 import { Phone } from '../phone';
 
 @Component({
-	selector: 'app-contact-create',
-	templateUrl: 'contact-create.component.html',
-	styleUrls: ['contact-create.component.css']
+	selector: 'app-contact-edit',
+	templateUrl: 'contact-edit.component.html',
+	styleUrls: ['contact-edit.component.css']
 })
-export class ContactCreateComponent {
-	
-	ImageFile: File;
+export class ContactEditComponent implements OnInit {
+	@Input() contact;
 	@ViewChild('fileInput') fileInput;
-	form = new FormGroup({
-		'first_name': new FormControl(),
-		'last_name': new FormControl(),
-		'image_name': new FormControl(),
-		'email': new FormControl(),
-		'favorite': new FormControl(),
-		'phones' : new FormArray([])
-	})
+	image_name = '';
+	form: any;
+	user_id: number;
+	ImageFile: File;
 	
 	constructor(public activeModal: NgbActiveModal, private contactService: ContactService) {}
+
+	ngOnInit() {
+		this.user_id = this.contact.id;
+		this.form = new FormGroup({
+			'first_name': new FormControl(this.contact.first_name),
+			'last_name': new FormControl(this.contact.last_name),
+			'image_name': new FormControl(),
+			'email': new FormControl(this.contact.email),
+			'favorite': new FormControl(this.contact.favorite),
+			'phones' : new FormArray([])
+		});
+		
+		/*== set the phones ==*/
+		this.contact.phones.forEach(phone=>{
+			(this.form.get('phones') as FormArray).push(new FormArray([new FormControl(phone.name), new FormControl(phone.number)]));
+		})
+	}
 	
-	closeModal() {
-		this.activeModal.close();
+	removePhoto(image_name){
+		//set the image name if someone click close ot put it again on place
+		this.image_name = image_name;
+		
+		//Delete the image name that the choose file button is shown again
+		this.contact.image_name = '';
 	}
 	
 	onSubmit(value){
+		/*console.log(value);*/
 		
 		let formData = new FormData();
 		formData.append('first_name', value.first_name);
 		formData.append('last_name', value.last_name);
-		if(this.ImageFile.name){
+		
+		if(this.ImageFile){
 			formData.append('image_name', this.ImageFile, this.ImageFile.name);
 		}else{			
 			formData.append('image_name', 'false');
@@ -46,11 +64,15 @@ export class ContactCreateComponent {
 			formData.append('phones[]', phone);
 		}
 		
-		this.contactService.submitData(formData).subscribe(resp => { 
-			//console.log(resp);
+		
+		this.contactService.editData(this.user_id, formData).subscribe(resp => {
+			console.log(resp);
 			//Give the under component an response that the data have been changed to load it again
 			this.activeModal.close(true);
+			
 		});
+		
+		
 		
 	}
 	
@@ -61,6 +83,13 @@ export class ContactCreateComponent {
 		}
 	}
 	
+	
+	closeModal() {
+		this.contact.image_name = this.image_name;
+		
+		this.activeModal.close();
+		
+	}
 	
 	//add phone to phones e.g. ['Home', '555-555']
 	addPhone(name, phone) {
