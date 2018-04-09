@@ -77,8 +77,5 @@ export class ContactListComponent implements OnInit, OnDestroy {
 		
 	}
 	
-	showContact(){
-		console.log('test');
-	}
 	
 }

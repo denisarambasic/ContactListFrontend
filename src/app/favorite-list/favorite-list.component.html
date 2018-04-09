@@ -1,0 +1,29 @@
+<div class="search row justify-content-center">
+	<div class="col col-md-6 app">
+		<input type="text" class='search-box'>
+	</div>
+</div>
+
+<div class="row">
+	<!-- repeat this block -->
+	<div class="col col-md-3" *ngFor="let contact of contacts">
+		<div class="box list" [routerLink]="['/contacts', contact.id]">
+			<div class="icon1" (click)="changeFavorite($event, contact.id, contact.favorite)">
+				<i [ngClass]="(contact.favorite == '1') ? 'fas' : 'far'" class="fa-heart"></i>
+			</div>
+			<div class="icon2">
+				<i class="fas fa-pencil-alt"></i>
+			</div>
+			<div class="icon3" (click)="openModalDelete($event, contact.id, contact.first_name, contact.last_name)">
+				<i class="far fa-trash-alt"></i>
+			</div>
+			<div class="picture">
+				<img class="profile_img" src="{{ imgFolderServer }}{{ contact.image_name }}" alt="" />
+			</div>
+			<div class="contact-name">
+				{{ contact.first_name }} {{ contact.last_name }}
+			</div>
+		</div>
+	</div>
+	<!-- End repeat -->
+</div>
