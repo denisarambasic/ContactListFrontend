@@ -18,9 +18,14 @@ export class ContactService {
 		return this.http.get(this.url + 'favorites');
 	}
 	
-	//get all contact by falue from searchbox
+	//get all contacts by falue from the searchbox
 	getAllContactsByValue(search_value){
 		return this.http.get(this.url + 'search/' + search_value);
+	}
+	
+	//get all favorite contacts by falue from thesearchbox
+	getAllFavoriteContactsByValue(search_value){
+		return this.http.get(this.url + 'favorites/search/' + search_value);
 	}
 	
 	//create a new user(contact) on the backend

@@ -26,6 +26,19 @@ export class FavoriteListComponent {
 		});
 	}
 	
+	//Handle Search field input:
+	keyUp(search_value){
+		if(search_value != ''){
+			this.contactService.getAllFavoriteContactsByValue(search_value).subscribe(data => {
+				this.contacts = data;
+			});
+		}else{
+			this.contactService.getAllFavoriteContacts().subscribe(data => {
+				this.contacts = data;
+			});
+		}
+	}
+	
 	ngOnDestroy() {
 		this.contactSub.unsubscribe();
 	}

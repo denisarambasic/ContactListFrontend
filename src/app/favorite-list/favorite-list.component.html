@@ -1,6 +1,6 @@
 <div class="search row justify-content-center">
 	<div class="col col-md-6 app">
-		<input type="text" class='search-box'>
+		<input type="text" #search_fild class='search-box' (keyup)="keyUp(search_fild.value)">
 	</div>
 </div>
 
