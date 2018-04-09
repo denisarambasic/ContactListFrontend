@@ -25,6 +25,19 @@ export class ContactListComponent implements OnInit, OnDestroy {
 		});
 	}
 	
+	//Handle Search field input:
+	keyUp(search_value){
+		if(search_value != ''){
+			this.contactService.getAllContactsByValue(search_value).subscribe(data => {
+				this.contacts = data;
+			});
+		}else{
+			this.contactService.getAllContacts().subscribe(data => {
+				this.contacts = data;
+			});
+		}
+	}
+	
 	ngOnDestroy() {
 		this.contactSub.unsubscribe();
 	}
