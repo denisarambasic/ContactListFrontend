@@ -33,7 +33,7 @@ export class ContactCreateComponent {
 		let formData = new FormData();
 		formData.append('first_name', value.first_name);
 		formData.append('last_name', value.last_name);
-		if(this.ImageFile.name){
+		if(this.ImageFile){
 			formData.append('image_name', this.ImageFile, this.ImageFile.name);
 		}else{			
 			formData.append('image_name', 'false');
