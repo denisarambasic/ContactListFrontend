@@ -8,8 +8,14 @@ export class ContactService {
 	
 	constructor(private http: HttpClient) {}
 	
+	//get all contacts(users)
 	getAllContacts(){
 		return this.http.get(this.url);
+	}
+	
+	//get all favorite contacts(users)
+	getAllFavoriteContacts(){
+		return this.http.get(this.url + 'favorites');
 	}
 	
 	//create a new user(contact) on the backend
